@@ -1,0 +1,30 @@
+<html>
+<body>
+  <h3>Select Gender</h3>
+  <input type="radio" name="gender" value="Male"> Male
+  <input type="radio" name="gender" value="Female"> Female
+
+  <h3>Select Hobbies</h3>
+  <input type="checkbox" name="hobby" value="Reading"> Reading
+  <input type="checkbox" name="hobby" value="Traveling"> Traveling
+  <input type="checkbox" name="hobby" value="Gaming"> Gaming
+
+  <br><br>
+  <button onclick="display()">Show Selected</button>
+  <p id="result"></p>
+
+  <script>
+    function display() {
+
+      let gender = document.querySelector('input[name="gender"]:checked');
+      let selectedGender = gender ? gender.value : "Not selected";
+      let hobbies = document.querySelectorAll('input[name="hobby"]:checked');
+      let selectedHobbies = Array.from(hobbies).map(h => h.value).join(", ") || "None";
+
+
+      document.getElementById("result").textContent = 
+        `Gender: ${selectedGender} & Hobbies: ${selectedHobbies}`;
+    }
+  </script>
+</body>
+</html>

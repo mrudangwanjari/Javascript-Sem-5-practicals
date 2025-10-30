@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Cart Calculator</title>
+</head>
+<body>
+  <h2>Shopping Cart Calculator</h2>
+  <pre id="receipt"></pre>
+
+  <script>
+    let cart = [
+      { id: 1, name: "Pen", price: 20, qty: 2, category: "stationery" },
+      { id: 2, name: "Mug", price: 150, qty: 1, category: "kitchen" },
+      { id: 3, name: "Notebook", price: 80, qty: 3, category: "stationery" }
+    ];
+
+    let itemTotals = cart.map(item => item.price * item.qty);
+
+    let discountedItemTotals = cart.map(item => {
+      let subtotal = item.price * item.qty;
+      if (item.qty >= 3) {
+        subtotal = subtotal - (subtotal * 0.05);
+      }
+      return subtotal;
+    });
+
+    let stationeryItems = cart.filter(item => item.category === "stationery");
+    let stationeryTotal = stationeryItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    let stationeryDiscount = stationeryTotal > 200 ? stationeryTotal * 0.10 : 0;
+
+    let subtotal = itemTotals.reduce((sum, val) => sum + val, 0);
+    let totalAfterItemDiscount = discountedItemTotals.reduce((sum, val) => sum + val, 0);
+    let itemDiscount = subtotal - totalAfterItemDiscount;
+    let finalTotal = totalAfterItemDiscount - stationeryDiscount;
+
+    let output = "";
+    cart.forEach(item => {
+      let subtotal = item.price * item.qty;
+      if (item.qty >= 3) {
+        output += `Item: ${item.name} (x${item.qty}) = ${subtotal} → discount applied\n`;
+      } else {
+        output += `Item: ${item.name} (x${item.qty}) = ${subtotal}\n`;
+      }
+    });
+
+    output += "---------------------------------\n";
+    output += `Subtotal: ${subtotal}\n`;
+    output += `Item Discounts: ${itemDiscount}\n`;
+    output += `Stationery Discount: ${stationeryDiscount}\n`;
+    output += `Final Total: ${finalTotal.toFixed(2)}\n`;
+
+    document.getElementById("receipt").innerText = output;
+  </script>
+</body>
+</html>

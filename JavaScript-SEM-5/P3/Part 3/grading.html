@@ -1,0 +1,31 @@
+<html>
+  <body>
+
+    <input type="number" id = "sub1" placeholder="Enter 1st subject marks"/>
+    <input type="number" id = "sub2" placeholder="Enter 2nd subject marks"/>
+    <input type="number" id = "sub3" placeholder="Enter 3rd subject marks"/>
+    
+    <button onclick="display()">Display Grade</button>
+    
+    <p id = "grade"></p>
+
+    <script>
+      function display() {
+        let m1 = document.getElementById("sub1").value;
+        let m2 = document.getElementById("sub2").value;
+        let m3 = document.getElementById("sub3").value;
+        let total = Number(m1) + Number(m2) + Number(m3);
+        let avg = total/3;
+        if (avg >= 80)
+            document.getElementById("grade").innerText = "Grade: A";
+        else if (avg >= 70)
+            document.getElementById("grade").innerText = "Grade: B";
+        else if (avg >= 50)
+          document.getElementById("grade").innerText = "Grade: C";
+        else
+          document.getElementById("grade").innerText = "Please pay a 1000 rupee fine for the backlog exam.";
+      }
+    </script>
+    
+  </body>
+</html>

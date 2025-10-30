@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <h2> Emotion Detector </h2>
+    <p id = "sentiment"> The result will be shown here! </p>
+    
+    <script>
+  
+      let sentiment = Number(prompt("Enter your sentiment score (-10 to +10):"));
+      let keyword = prompt("Enter one keyword about how you're feeling (e.g., tired, excited, confused):").toLowerCase();
+
+      let tiredWords = ["tired", "sleepy", "exhausted"];
+      let excitedWords = ["excited", "happy", "joyful"];
+      let confusedWords = ["confused", "lost", "unsure"];
+
+      if (sentiment > 5 && excitedWords.includes(keyword)) {
+        document.getElementById("sentiment").innerText = "You're feeling great! Keep it up!"
+      } else if (sentiment > 5 && tiredWords.includes(keyword)) {
+        document.getElementById("sentiment").innerText = "You're doing fine but seem tired. Rest well."
+      } else if (sentiment < 0 && confusedWords.includes(keyword)) {
+        document.getElementById("sentiment").innerText = "You seem confused. Let me help you."
+      } else if (sentiment === 0 && keyword === "") {
+        document.getElementById("sentiment").innerText = "I can't tell how you're feeling. Want to chat?"
+      } else if (sentiment < -5) {
+        document.getElementById("sentiment").innerText = "You sound upset. I'm here if you need support."
+      } else {
+        document.getElementById("sentiment").innerText = "Thanks for sharing! How can I help you today?"
+      }
+      
+    </script>
+  </body>
+</html>

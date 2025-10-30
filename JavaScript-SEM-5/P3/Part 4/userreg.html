@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Registration</title>
+</head>
+<body>
+
+  <h2>User Registration</h2>
+
+  <form id="registrationForm">
+    <label>Name: <input type="text" id="name" required></label><br><br>
+    <label>Age: <input type="number" id="age" required></label><br><br>
+    <label>Email: <input type="email" id="email" required></label><br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <p id="registerResult"></p>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const email = document.getElementById("email").value;
+
+ 
+      if (name === "") {
+        document.getElementById("registerResult").textContent = "Please enter your name.";
+        return;
+      }
+
+      if (age === "" || age < 13 || age > 120) {
+        document.getElementById("registerResult").textContent = "Age must be between 13 and 120.";
+        return;
+      }
+
+      if (email === "" || !email.includes("@")) {
+        document.getElementById("registerResult").textContent = "Please enter a valid email.";
+        return;
+      }
+
+      document.getElementById("registerResult").textContent =
+        "Welcome, " + name + " (Age: " + age + "). Your email " + email + " has been registered successfully!";
+    });
+  </script>
+
+</body>
+</html>

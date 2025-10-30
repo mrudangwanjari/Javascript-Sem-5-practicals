@@ -1,0 +1,37 @@
+<html>
+
+<body>
+  <h2>Edit Tasks</h2>
+
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  <button onclick="addTask()">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    function addTask() {
+      let input = document.getElementById("taskInput");
+      let taskText = input.value.trim();
+      if (taskText === "") return;
+
+      let li = document.createElement("li");
+      li.innerText = taskText + " ";
+
+      let editBtn = document.createElement("button");
+      editBtn.innerText = "Edit";
+      editBtn.onclick = function() {
+        let newTask = prompt("Edit task:", taskText);
+        if (newTask) {
+          li.firstChild.textContent = newTask + " ";
+          taskText = newTask;
+        }
+      };
+
+      li.appendChild(editBtn);
+      document.getElementById("taskList").appendChild(li);
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>

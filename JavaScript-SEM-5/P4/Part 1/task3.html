@@ -1,0 +1,19 @@
+<html>
+
+<body>
+
+<script>
+  const hasJavaScript = (str) => {
+    return str.includes("javascript");
+  };
+
+  let text = prompt("Enter a sentence:").toLowerCase();
+  if (hasJavaScript(text) == true) {
+    alert("The text contains 'JavaScript'.");
+  } else {
+    alert("The text does not contain 'JavaScript'.");
+  }
+</script>
+
+</body>
+</html>

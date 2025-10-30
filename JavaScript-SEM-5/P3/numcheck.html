@@ -1,0 +1,36 @@
+<html>
+
+  <body>
+
+    <h1>Task 1</h1>
+
+    <h3>Number Checker</h3>
+    <p id = "num" > The number you entered: </p>
+    <p id = "check" > The number is </p>
+    <br>
+
+    <script>
+      let num = prompt("Enter the number:");
+
+      if (num > 0) {
+        alert(`The number is positive.`);
+        var check = "positive";
+      }
+
+      else if (num < 0){
+        alert(`The number is negative.`);
+        var check = "negative";
+      }
+
+      else{
+        alert(`The number is zero.`);
+        var check = "zero";
+      }
+
+      document.getElementById("num").innerText = `The number you entered: ${num}`
+      document.getElementById("check").innerText = `The number is ${check}`
+    </script>
+
+  </body>
+
+</html>

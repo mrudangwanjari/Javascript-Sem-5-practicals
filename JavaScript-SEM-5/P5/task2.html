@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Student Objects Array</title>
+</head>
+<body>
+  <h3>Student Reports</h3>
+  <p id="names"></p>
+  <p id="passed"></p>
+  <p id="average"></p>
+  <div id="report"></div>
+
+  <script>
+    let students = [
+      { id: 1, name: "Amit", marks: 75 },
+      { id: 2, name: "Neha", marks: 48 },
+      { id: 3, name: "Rahul", marks: 82 },
+      { id: 4, name: "Sana", marks: 66 }
+    ];
+
+    let names = students.map(s => s.name);
+    document.getElementById("names").innerText = "Student Names: " + names;
+
+    let passed = students.filter(s => s.marks > 50);
+    document.getElementById("passed").innerText = "Students with marks > 50: " + passed.map(s => s.name);
+
+    let average = students.reduce((sum, s) => sum + s.marks, 0) / students.length;
+    document.getElementById("average").innerText = "Average Marks: " + average.toFixed(2);
+
+    let reportDiv = document.getElementById("report");
+    students.forEach(s => {
+      let p = document.createElement("p");
+      p.innerText = `ID: ${s.id}, Name: ${s.name}, Marks: ${s.marks}`;
+      reportDiv.appendChild(p);
+    });
+  </script>
+</body>
+</html>

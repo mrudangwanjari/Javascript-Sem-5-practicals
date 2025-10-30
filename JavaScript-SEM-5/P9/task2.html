@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Theme & Font Size</title>
+<style>
+body{font-family:Arial;text-align:center;transition:0.5s;}
+.dark{background:#121212;color:white;}
+.light{background:white;color:black;}
+button{margin:10px;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;}
+</style>
+</head>
+<body>
+<h2>Theme and Font Size Switcher</h2>
+<button id="themeBtn">Toggle Theme</button>
+<select id="fontSelect">
+  <option value="16px">Small</option>
+  <option value="20px">Medium</option>
+  <option value="24px">Large</option>
+</select>
+
+<script>
+const body=document.body
+const btn=document.getElementById("themeBtn")
+const font=document.getElementById("fontSelect")
+let theme=localStorage.getItem("theme")||"light"
+let size=localStorage.getItem("fontSize")||"16px"
+body.classList.add(theme)
+body.style.fontSize=size
+font.value=size
+btn.textContent=theme==="dark"?"Switch to Light":"Switch to Dark"
+btn.onclick=function(){
+  theme=body.classList.contains("dark")?"light":"dark"
+  body.className=theme
+  localStorage.setItem("theme",theme)
+  btn.textContent=theme==="dark"?"Switch to Light":"Switch to Dark"
+}
+font.onchange=function(){
+  let s=font.value
+  body.style.fontSize=s
+  localStorage.setItem("fontSize",s)
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+  <body>
+    <h2>Game NPC Decision</h2>
+    <p id="npc">NPC reaction will be shown here.</p>
+
+    <script>
+
+      let health = Number(prompt("Enter your health (0-100):"));
+      let reputation = Number(prompt("Enter your reputation (-50 to +50):"));
+      let inventory = prompt("Enter one item in your inventory (e.g., sword, magic ring):").toLowerCase();
+
+      let reaction = "";
+
+      if (health < 30 && reputation > 30) {
+        reaction = "NPC helps you because you're weak but respected.";
+      } 
+      else if (reputation < -40 && inventory === "magic ring") {
+        reaction = "NPC is suspicious but respects your power.";
+      } 
+      else if (health > 80 && reputation < 0) {
+        reaction = "NPC keeps distance. You're strong but untrusted.";
+      } 
+      else {
+        reaction = "NPC is neutral and watches you closely.";
+      }
+
+      document.getElementById("npc").innerText = reaction;
+    </script>
+  </body>
+</html>

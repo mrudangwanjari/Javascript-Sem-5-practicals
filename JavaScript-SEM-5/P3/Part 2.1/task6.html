@@ -1,0 +1,14 @@
+<html>
+  <body>
+    <script>
+      let secret = Math.floor(Math.random() * 100) + 1;
+      let guess;
+      do {
+        guess = Number(prompt("Guess a number (1-100):"));
+        if (guess > secret) alert("Too high!");
+        else if (guess < secret) alert("Too low!");
+      } while (guess !== secret);
+      alert("You guessed it!");
+    </script>
+  </body>
+</html>

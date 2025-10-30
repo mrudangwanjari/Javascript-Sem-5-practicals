@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Session Form</title></head>
+<body>
+<h2>Contact Form</h2>
+<form>
+  <input id="name" placeholder="Name"><br><br>
+  <input id="email" placeholder="Email"><br><br>
+  <textarea id="msg" placeholder="Message"></textarea><br><br>
+</form>
+
+<script>
+let n=document.getElementById("name")
+let e=document.getElementById("email")
+let m=document.getElementById("msg")
+n.value=sessionStorage.getItem("name")||""
+e.value=sessionStorage.getItem("email")||""
+m.value=sessionStorage.getItem("msg")||""
+n.oninput=()=>sessionStorage.setItem("name",n.value)
+e.oninput=()=>sessionStorage.setItem("email",e.value)
+m.oninput=()=>sessionStorage.setItem("msg",m.value)
+</script>
+</body>
+</html>

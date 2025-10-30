@@ -1,0 +1,33 @@
+<html>
+<body>
+  <h2>String Methods & Regular Expressions</h2>
+  <script>
+    let paragraph = prompt("Enter a paragraph:");
+    let vowels = paragraph.match(/[aeiouAEIOU]/g); 
+    let vowelCount = vowels ? vowels.length : 0;
+    document.write("<p>Vowel Count: " + vowelCount + "</p>");
+
+    let reversed = paragraph.split("").reverse().join("");
+    document.write("<p>Reversed Paragraph: " + reversed + "</p>");
+    
+    let word = prompt("Enter a word to search in paragraph:");
+    let position = paragraph.indexOf(word);
+    if (position !== -1) {
+      document.write("<p>Word '" + word + "' found at position: " + position + "</p>");
+    } else {
+      document.write("<p>Word '" + word + "' not found.</p>");
+    }
+
+    let cleaned = paragraph.replace(/\s+/g, " ");
+    document.write("<p>Cleaned Paragraph: " + cleaned + "</p>");
+
+    let email = prompt("Enter your email:");
+    let emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    let validEmail = emailRegex.test(email);
+    document.write("<p>Email Valid: " + validEmail + "</p>");
+
+    let numbers = paragraph.match(/\d+/g);
+    document.write("<p>Numbers found: " + (numbers ? numbers.join(", ") : "None") + "</p>");
+  </script>
+</body>
+</html>

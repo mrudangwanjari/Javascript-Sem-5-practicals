@@ -1,0 +1,57 @@
+<html>
+
+  <body>
+
+    <h1>Task 4</h1>
+
+    <h3>ATM</h3>
+    <p id = "balance" > Your current balance is: </p>
+    <p id = "atm" > Welcome to the ATM! </p>
+    <br>
+
+    <script>
+      let amount = Number(prompt("Enter your account balance (amount): "));
+      let user = prompt("What do you wanna do\n'W' for Withdraw\n'D' for Deposit\n'B' for Balance\nEnter your choice:");
+
+      if (user == "W") {
+        let withdraw = Number(prompt("Enter the amount to withdraw: "));
+
+        if (withdraw > amount){
+          alert("Insufficient balance");
+          document.getElementById("atm").innerText = `Insufficient balance`
+          document.getElementById("balance").innerText = `Your current balance is: ${amount}`
+        }
+
+        else{
+          amount = amount - withdraw;
+          alert(`Withdrawal successful. Your new balance is ${amount}`);
+          document.getElementById("atm").innerText = `Withdrawal successful. Your new balance is ${amount}`
+          document.getElementById("balance").innerText = `Your current balance is: ${amount}`
+        }
+
+      }
+
+      else if (user == "D") {
+        let deposit = Number(prompt("Enter the amount to deposit: "));
+        amount = amount + deposit;
+        alert(`Deposit successful. Your new balance is ${amount}`);
+        document.getElementById("atm").innerText = `Deposit successful. Your new balance is ${amount}`
+        document.getElementById("balance").innerText = `Your current balance is: ${amount}`
+      }
+
+      else if (user == "B") {
+        alert(`Your current balance is ${amount}`);
+        document.getElementById("atm").innerText = `Your current balance is ${amount}`
+        document.getElementById("balance").innerText = `Your current balance is: ${amount}`
+      }
+
+      else {
+        alert("Invalid transaction type!");
+        document.getElementById("atm").innerText = `Invalid transaction type!`
+        document.getElementById("balance").innerText = `Your current balance is: ${amount}`
+      }
+    </script>
+
+  </body>
+
+</html>

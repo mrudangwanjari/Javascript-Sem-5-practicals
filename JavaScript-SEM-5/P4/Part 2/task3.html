@@ -1,0 +1,26 @@
+<html>
+<body>
+  <h3>Safe Square Root</h3>
+  <input type="number" id="num" placeholder="Enter a number">
+  <button onclick="calculateRoot()">Calculate</button>
+  <p id="result"></p>
+
+  <script>
+    function safeSquareRoot(value) {
+      try {
+        if (isNaN(value) || value < 0) {
+          throw "Invalid input";
+        }
+        return Math.sqrt(value);
+      } catch (error) {
+        return error;
+      }
+    }
+
+    function calculateRoot() {
+      let num = document.getElementById("num").value;
+      document.getElementById("result").innerText = safeSquareRoot(Number(num));
+    }
+  </script>
+</body>
+</html>

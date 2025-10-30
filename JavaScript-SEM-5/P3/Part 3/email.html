@@ -1,0 +1,17 @@
+<html>
+<body>
+  <input type="email" id="email" placeholder="Enter valid email" />
+  <button onclick="display()">Display</button>
+
+  <script>
+    function display() {
+      let mail = document.getElementById("email");
+      
+      if (mail.checkValidity())
+        alert(`You have entered: ` + mail.value);
+      else
+        alert("Please enter a valid email!");
+    }
+  </script>
+</body>
+</html>

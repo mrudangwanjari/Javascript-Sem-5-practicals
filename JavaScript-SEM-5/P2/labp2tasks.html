@@ -1,0 +1,39 @@
+<html>
+  <body>
+    <h1>Lab Practical 2 Task</h1>
+    <p>Check Console!</p>
+    
+    <script>
+      console.log("Task 1");
+      const student = {
+        name: "Parthiv",
+        rollNo: 106,
+        marks: {
+          os: 85,
+          toc: 90,
+          ds: 78,
+          daa: 88,
+          js: 92
+        }
+      };
+
+      const { os, toc, ds, daa, js } = student.marks;
+      const total = os + toc + ds + daa + js;
+      const percentage = (total / 500) * 100;
+
+      console.log(`Report Card for ${student.name} (Roll No: ${student.rollNo})
+-----------------------------------
+Subjects: TOC: ${toc}, OS: ${os}, DAA: ${daa}, DS: ${ds}, JS: ${js}
+Total Marks: ${total}
+Percentage: ${percentage}`);
+
+      console.log("Task 2");
+      const greet = (name = "Guest", role = "Visit", location = "SIT Nagpur") =>
+        `Hello ${name}! Your role is ${role} and you are currently in ${location}.`;
+
+      console.log(greet("Parthiv", "Developer", "Nagpur"));
+      console.log(greet("Naman", "Data Operator"));
+      console.log(greet());
+    </script>  
+  </body>
+</html>

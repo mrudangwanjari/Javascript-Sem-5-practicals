@@ -1,0 +1,24 @@
+<html>
+
+<body>
+
+<script>
+  function secretmessage(password){
+    let pass = '1234';
+    if (password == pass){
+      return `You have accessed the secret message:
+HELLO FROM PARTHIV! WELCOME TO MY TASK!!!`;;
+    }
+    else{
+      return 'Wrong password';
+    }
+  }
+
+  let user = prompt(`Enter password to see the message:
+(Hint: It's first four digits of the number!)`);
+  alert(secretmessage(user));
+  
+</script>
+
+</body>
+</html>

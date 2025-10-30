@@ -1,0 +1,12 @@
+<html>
+<body>
+  <h2>Replace Multiple Spaces</h2>
+  <p id="result"></p>
+
+  <script>
+    let str = prompt("Enter a sentence:");
+    let fixed = str.replace(/\s+/g, " ");
+    document.getElementById("result").innerText = fixed;
+  </script>
+</body>
+</html>

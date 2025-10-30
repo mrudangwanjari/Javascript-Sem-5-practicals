@@ -1,0 +1,14 @@
+.student-card.top-scorer {
+  box-shadow: 0 0 10px blue;
+}
+
+.container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.student-card {
+  border: 1px solid;
+  padding: 10px ;
+}

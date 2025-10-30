@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <script>
+      let input;
+      while (true) {
+        input = prompt("Enter number (or type 'exit'):");
+        if (input === "exit") break;
+        let num = Number(input);
+        let fact = 1;
+        for (let i = 1; i <= num; i++) {
+          fact *= i;
+        }
+        document.write(`Factorial of ${num} is: ` + fact + "<br/>");
+      }
+    </script>
+  </body>
+</html>

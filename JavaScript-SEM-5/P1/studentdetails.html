@@ -1,0 +1,30 @@
+<html>
+  
+<head>
+  <title>Student Information - SIT CSE</title>
+  <script src="studentdetails.js"></script>
+</head>
+
+  <style>
+    body {
+      background-color: lightskyblue;
+      text-align: center;
+      padding: 50px;
+    }
+    
+    #student-name {
+      margin-top: 20px;
+      font-size: 24px;
+      color: darkgreen;
+    }
+  </style>
+  
+<body>
+  <h1>Student Information</h1>
+  <p id="student-name">Fetching your name...</p>
+  <script>
+    document.getElementById("student-name").textContent = "Welcome, " + studname + "!";
+  </script>
+</body>
+  
+</html>

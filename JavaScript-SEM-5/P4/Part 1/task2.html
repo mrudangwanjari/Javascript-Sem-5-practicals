@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <p id = "number">The factorial will appear here.</p>
+    <button onclick = getfact()> Press me and enter the number! </button>
+
+    <script>
+      function getfact(){
+        let num = prompt("Enter the number");
+        const fac = function fact(n){
+          return n <= 1 ? 1 : n * fact(n - 1);
+        }
+        document.getElementById("number").innerText = `The factorial of ${num} is ${fac(num)}`;
+      }
+    </script>
+    
+  </body>
+</html>

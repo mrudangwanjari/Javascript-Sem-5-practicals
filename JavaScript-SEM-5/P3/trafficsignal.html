@@ -1,0 +1,32 @@
+<html>
+
+  <body>
+
+    <h1>Task 3</h1>
+
+    <h3>Traffic Signal</h3>
+    <p id = "light" > Please wear yor helmet! </p>
+    <br>
+
+
+    <!-- Task 3 -->
+    <script>
+      let light = prompt("Enter the light color:\n'red' for Red\n'yellow' for Yellow\n'green' for Green");
+      switch (light) {
+          case "red":
+            alert("Stop!");
+            document.getElementById("light").innerText = `Stop!`
+            break;
+          case "yellow":
+            alert("Slow down!");
+            document.getElementById("light").innerText = `Slow down!`
+            break;  
+          case "green":
+            alert("Go!");
+            document.getElementById("light").innerText = `Go!`  
+      }
+    </script>
+
+  </body>
+
+</html>

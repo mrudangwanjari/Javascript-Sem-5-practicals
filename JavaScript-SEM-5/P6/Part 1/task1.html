@@ -1,0 +1,15 @@
+<html>
+<body>
+  <h2>Name Formatter</h2>
+  <p id="result"></p>
+
+  <script>
+    let input = prompt("Enter your name:");
+    let parts = input.trim().split(" ");
+    let formatted = parts.map(word =>
+      word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    ).join(" ");
+    document.getElementById("result").innerText = formatted;
+  </script>
+</body>
+</html>

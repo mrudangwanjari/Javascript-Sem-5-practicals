@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gym Admission Form</title>
+<style>
+  span {font-size:12px; color:red;}
+  input:valid {border:1px solid green;}
+  input:invalid {border:1px solid red;}
+</style>
+</head>
+<body>
+<h2>Gym Admission Form</h2>
+
+<form id="gymForm" onsubmit="return validateForm()" onreset="clearErrors()">
+  <label>Full Name:</label>
+  <input type="text" id="name" oninput="checkName()" required>
+  <span id="nameErr"></span><br><br>
+
+  <label>Email:</label>
+  <input type="email" id="email" oninput="checkEmail()" required>
+  <span id="emailErr"></span><br><br>
+
+  <label>Age:</label>
+  <input type="number" id="age" onblur="checkAge()" required>
+  <span id="ageErr"></span><br><br>
+
+  <label>Gender:</label>
+  <input type="radio" name="gender" value="Male">Male
+  <input type="radio" name="gender" value="Female">Female
+  <span id="genderErr"></span><br><br>
+
+  <label>Membership Type:</label>
+  <select id="membership" onchange="checkMembership()">
+    <option value="">Select</option>
+    <option>Monthly</option>
+    <option>Quarterly</option>
+    <option>Yearly</option>
+  </select>
+  <span id="memberErr"></span><br><br>
+
+  <label>Password:</label>
+  <input type="password" id="pass" oninput="checkPass()" required>
+  <span id="passErr"></span><br><br>
+
+  <label>Confirm Password:</label>
+  <input type="password" id="cpass" oninput="checkCpass()" required>
+  <span id="cpassErr"></span><br><br>
+
+  <label>Phone:</label>
+  <input type="text" id="phone" oninput="checkPhone()" required>
+  <span id="phoneErr"></span><br><br>
+
+  <label>Date of Birth:</label>
+  <input type="date" id="dob" onchange="checkDob()" required>
+  <span id="dobErr"></span><br><br>
+
+  <label>Profile Photo:</label>
+  <input type="file" id="photo" onchange="checkPhoto()" required>
+  <span id="photoErr"></span><br><br>
+
+  <label><input type="checkbox" id="terms" onchange="checkTerms()"> I agree to terms</label>
+  <span id="termsErr"></span><br><br>
+
+  <button type="submit">Submit</button>
+  <button type="reset">Reset</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+function checkName(){
+  let n=document.getElementById("name").value
+  let e=document.getElementById("nameErr")
+  if(!/^[A-Za-z ]{3,}$/.test(n)) e.textContent="Invalid name"
+  else e.textContent=""
+}
+function checkEmail(){
+  let e1=document.getElementById("email").value
+  let e=document.getElementById("emailErr")
+  if(!/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(e1)) e.textContent="Invalid email"
+  else e.textContent=""
+}
+function checkAge(){
+  let a=document.getElementById("age").value
+  let e=document.getElementById("ageErr")
+  if(a<18||a>60) e.textContent="Age must be 18-60"
+  else e.textContent=""
+}
+function checkMembership(){
+  let m=document.getElementById("membership").value
+  let e=document.getElementById("memberErr")
+  if(m==="") e.textContent="Select membership"
+  else e.textContent=""
+}
+function checkPass(){
+  let p=document.getElementById("pass").value
+  let e=document.getElementById("passErr")
+  if(p.length<6) e.textContent="Password must be at least 6 characters"
+  else e.textContent=""
+}
+function checkCpass(){
+  let p=document.getElementById("pass").value
+  let c=document.getElementById("cpass").value
+  let e=document.getElementById("cpassErr")
+  if(p!==c) e.textContent="Passwords don't match"
+  else e.textContent=""
+}
+function checkPhone(){
+  let ph=document.getElementById("phone").value
+  let e=document.getElementById("phoneErr")
+  if(!/^[0-9]{10}$/.test(ph)) e.textContent="Enter 10 digits"
+  else e.textContent=""
+}
+function checkDob(){
+  let d=new Date(document.getElementById("dob").value)
+  let t=new Date()
+  let e=document.getElementById("dobErr")
+  if(d>t) e.textContent="Invalid date"
+  else e.textContent=""
+}
+function checkPhoto(){
+  let f=document.getElementById("photo").files[0]
+  let e=document.getElementById("photoErr")
+  if(f && (!f.name.match(/\.(jpg|png)$/i) || f.size>1024*1024)) e.textContent="Invalid file"
+  else e.textContent=""
+}
+function checkTerms(){
+  let t=document.getElementById("terms")
+  let e=document.getElementById("termsErr")
+  if(!t.checked) e.textContent="Accept terms"
+  else e.textContent=""
+}
+function validateForm(){
+  checkName();checkEmail();checkAge();checkMembership();checkPass();checkCpass();checkPhone();checkDob();checkPhoto();checkTerms();
+  let all=document.querySelectorAll("span")
+  for(let s of all){if(s.textContent!=="") return false}
+  document.getElementById("msg").textContent="Form submitted successfully! Welcome to FitZone Gym."
+  return false
+}
+function clearErrors(){
+  document.querySelectorAll("span").forEach(s=>s.textContent="")
+  document.getElementById("msg").textContent=""
+}
+</script>
+
+</body>
+</html>

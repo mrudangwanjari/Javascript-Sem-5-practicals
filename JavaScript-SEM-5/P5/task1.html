@@ -1,0 +1,24 @@
+<html>
+<head>
+  <title>Student Ages Array</title>
+</head>
+<body>
+  <h3>Student Ages Array Operations</h3>
+  <p id="ages"></p>
+  <p id="length"></p>
+  <p id="double"></p>
+  <p id="cube"></p>
+
+  <script>
+    let ages = [15, 16, 17, 18];
+    ages.push(19);
+    ages.pop();
+    document.getElementById("ages").innerText = "Current Ages: " + ages;
+    document.getElementById("length").innerText = "Length: " + ages.length;
+    let doubleAges = ages.map(a => a * 2);
+    document.getElementById("double").innerText = "Double of Ages: " + doubleAges;
+    let cubeAges = ages.map(a => a * a * a);
+    document.getElementById("cube").innerText = "Cube of Ages: " + cubeAges;
+  </script>
+</body>
+</html>

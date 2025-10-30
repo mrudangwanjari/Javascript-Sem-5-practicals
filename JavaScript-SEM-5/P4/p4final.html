@@ -1,0 +1,161 @@
+<html>
+<head>
+  <title>Smart Library Management System</title>
+</head>
+<body>
+  <h2>Smart Library Management System</h2>
+  <p>Open console for messages or interact via prompts/alerts.</p>
+
+  <script>
+    function getThickerBook(pages1, pages2) {
+      return pages1 > pages2 ? pages1 : pages2;
+    }
+
+    const bookFactorial = function(n) {
+      let fact = 1;
+      for (let i = 1; i <= n; i++) fact *= i;
+      return fact;
+    };
+
+    const checkLibraryNote = (note) => note.includes("Library");
+
+
+    function secretShelf(password) {
+      let rareNote = "Rare Book Note";
+      return function(pass) {
+        return pass === password ? rareNote : "Access Denied";
+      }
+    }
+
+    const shelf = secretShelf("abcd");
+
+
+    let libraryName = "City Library"; 
+
+    function scopeDemo() {
+      let bookCount = 500; 
+      if (true) {
+        let tempBorrowedBooks = 50; 
+        console.log("Temp Borrowed Books:", tempBorrowedBooks);
+      }
+      console.log("Book Count:", bookCount);
+    }
+
+
+    function reverseISBN(isbn) {
+      try {
+        if (isNaN(isbn)) throw "Invalid input!";
+        let sign = Math.sign(isbn);
+        let reversed = parseInt(Math.abs(isbn).toString().split("").reverse().join(""));
+        return reversed * sign;
+      } catch(err) {
+        return err;
+      }
+    }
+
+    function isBookIdPalindrome(id) {
+      let str = id.toString();
+      return str === str.split("").reverse().join("");
+    }
+
+    function isWordPalindrome(title) {
+      let cleaned = title.toLowerCase().replace(/\s+/g, "");
+      return cleaned === cleaned.split("").reverse().join("");
+    }
+
+    function sqrtPages(pages) {
+      try {
+        if (isNaN(pages) || pages < 0) throw "Error: Negative numbers not allowed";
+        return Math.sqrt(pages);
+      } catch(err) {
+        return err;
+      }
+    }
+
+    const isPrimeShelf = (num) => {
+      try {
+        if (isNaN(num) || num < 2) throw "Invalid input!";
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      } catch(err) {
+        return err;
+      }
+    }
+
+    function libraryMenu() {
+      let option;
+      do {
+        option = prompt(
+`Smart Library Menu:
+1. Compare two books by pages
+2. Generate factorial library ticket ID
+3. Check if note contains "Library"
+4. Retrieve rare book note
+5. Reverse ISBN & check palindrome
+6. Check if book title is palindrome
+7. Square root of total pages
+8. Check if shelf number is prime
+0. Exit
+Enter your choice:`
+        );
+
+        switch(option) {
+          case "1":
+            let p1 = Number(prompt("Enter pages of Book 1:"));
+            let p2 = Number(prompt("Enter pages of Book 2:"));
+            alert("Thicker book has " + getThickerBook(p1, p2) + " pages");
+            break;
+
+          case "2":
+            let n = Number(prompt("Enter a number for ticket ID:"));
+            alert("Library Ticket ID: " + bookFactorial(n));
+            break;
+
+          case "3":
+            let note = prompt("Enter note text:");
+            alert(checkLibraryNote(note) ? "Contains 'Library'" : "Does not contain 'Library'");
+            break;
+
+          case "4":
+            let pass = prompt("Enter password to access rare note:");
+            alert(shelf(pass));
+            break;
+
+          case "5":
+            let isbn = Number(prompt("Enter ISBN number:"));
+            let reversed = reverseISBN(isbn);
+            alert("Reversed ISBN: " + reversed + "\nPalindrome: " + isBookIdPalindrome(reversed));
+            break;
+
+          case "6":
+            let title = prompt("Enter book title:");
+            alert(isWordPalindrome(title) ? "Title is a palindrome" : "Title is not a palindrome");
+            break;
+
+          case "7":
+            let pages = Number(prompt("Enter total pages read:"));
+            alert("Square Root: " + sqrtPages(pages));
+            break;
+
+          case "8":
+            let shelfNum = Number(prompt("Enter shelf number:"));
+            alert("Shelf is prime? " + isPrimeShelf(shelfNum));
+            break;
+
+          case "0":
+            alert("Exiting Library System. Goodbye!");
+            break;
+
+          default:
+            alert("Invalid choice. Enter 0-8.");
+        }
+
+      } while(option !== "0");
+    }
+
+    libraryMenu();
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<html>
+  
+<link rel="stylesheet" href="style.css">
+  
+<body>
+
+<center><h2>Grading System</h2></center>
+<div class="container" id="students-container"></div>
+
+<script>
+  const subjects = ["Math", "Science", "English"];
+  const students = [
+    { name: "Parthiv Abhani", roll: 1101 },
+    { name: "Shlok Vij", roll: 1143 },
+    { name: "Aishi De", roll: 1008 }
+  ];
+
+  const container = document.getElementById("students-container");
+
+
+  students.forEach((student, index) => {
+    const card = document.createElement("div");
+    card.className = "student-card";
+    card.innerHTML = `
+      <h3>${student.name} (Roll: ${student.roll})</h3>
+      <label>Subject 1 (Range): <input type="range" min="0" max="100" value="50" id="s1-${index}"></label><br><br>
+      <label>Subject 2 (Input): <input type="number" min="0" max="100" id="s2-${index}"></label><br><br>
+      <label>Subject 3:
+        <select id="s3-${index}"></select>
+      </label><br><br><br>
+      <center><button onclick="calculate(${index})">Calculate</button><center><br>
+      <div class="result" id="result-${index}"></div>
+    `;
+    container.appendChild(card);
+
+    const dropdown = card.querySelector(`#s3-${index}`);
+    subjects.forEach(sub => {
+      const option = document.createElement("option");
+      option.value = sub;
+      option.text = sub;
+      dropdown.add(option);
+    });
+  });
+
+  function calculate(index) {
+    const s1 = Number(document.getElementById(`s1-${index}`).value);
+    const s2 = Number(document.getElementById(`s2-${index}`).value);
+
+    if (s2 < 0 || s2 > 100) {
+      alert("Enter valid marks between 0 and 100");
+      return;
+    }
+
+    const avg = Math.round((s1 + s2) / 2);
+    let grade = avg >= 85 ? "A" : avg >= 70 ? "B" : avg >= 50 ? "C" : "F";
+
+    let remark;
+    switch (true) {
+      case avg >= 85: remark = "Excellent"; break;
+      case avg >= 70: remark = "Good"; break;
+      case avg >= 50: remark = "Needs Improvement"; break;
+      default: remark = "Fail";
+    }
+
+    document.getElementById(`result-${index}`).innerHTML =
+      `Average: ${avg}<br>Grade: ${grade}<br>Remark: ${remark}`;
+
+    highlightTopScorer();
+  }
+
+  function highlightTopScorer() {
+    let highest = 0;
+    let topIndex = -1;
+
+    students.forEach((_, i) => {
+      const res = document.getElementById(`result-${i}`).innerHTML;
+      if (res) {
+        const avg = parseInt(res.match(/Average: (\d+)/)[1]);
+        if (avg > highest) {
+          highest = avg;
+          topIndex = i;
+        }
+      }
+    });
+
+    document.querySelectorAll(".student-card").forEach(card =>
+      card.classList.remove("top-scorer")
+    );
+
+    if (topIndex !== -1) {
+      document.querySelectorAll(".student-card")[topIndex].classList.add("top-scorer");
+    }
+  }
+</script>
+
+</body>
+</html>

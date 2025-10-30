@@ -1,0 +1,12 @@
+<html>
+<body>
+  <h2>Word Count</h2>
+  <p id="result"></p>
+
+  <script>
+    let sentence = prompt("Enter a sentence:");
+    let words = sentence.trim().split(/\s+/);
+    document.getElementById("result").innerText = words.length;
+  </script>
+</body>
+</html>

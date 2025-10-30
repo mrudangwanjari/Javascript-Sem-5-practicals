@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Personal Dashboard</title>
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  transition: all 0.4s ease;
+  text-align: center;
+  padding: 20px;
+}
+.dark { background-color: #121212; color: white; }
+.light { background-color: #ffffff; color: black; }
+#controls button, select, input[type="text"] {
+  margin: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#resetBtn { background:#e74c3c; color:white; }
+#saveUser { background:#2ecc71; color:white; }
+#themeBtn { background:#3498db; color:white; }
+</style>
+</head>
+<body>
+<h1 id="welcomeText">Welcome!</h1>
+<div id="controls">
+  <input type="text" id="userName" placeholder="Enter your name">
+  <button id="saveUser">Save Name</button>
+  <button id="themeBtn">Switch Theme</button>
+  <select id="fontChooser">
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+  </select>
+  <button id="resetBtn">Reset Preferences</button>
+</div>
+
+<p id="tabCounter"></p>
+
+<h3>Feedback</h3>
+<textarea id="feedback" rows="5" cols="40" placeholder="Your feedback..."></textarea>
+
+<script>
+const themeKey = "theme"
+const fontKey = "fontsizePref"
+const userKey = "username"
+const feedbackKey = "feedbackText"
+const body = document.body
+const themeBtn = document.getElementById("themeBtn")
+const fSelect = document.getElementById("fontChooser")
+const saveUserBtn = document.getElementById("saveUser")
+const userInput = document.getElementById("userName")
+const tabCounter = document.getElementById("tabCounter")
+const fb = document.getElementById("feedback")
+const resetBtn = document.getElementById("resetBtn")
+
+let savedTheme = localStorage.getItem(themeKey) || "light"
+body.classList.remove("light","dark")
+body.classList.add(savedTheme)
+themeBtn.textContent = savedTheme === "dark" ? "Switch to Light" : "Switch to Dark"
+
+let storedFont = localStorage.getItem(fontKey) || "medium"
+const sizeMap = { small: "14px", medium: "18px", large: "22px" }
+body.style.fontSize = sizeMap[storedFont] || "18px"
+fSelect.value = storedFont
+
+let savedUser = localStorage.getItem(userKey)
+if (savedUser) {
+  document.getElementById("welcomeText").textContent = "Welcome, " + savedUser
+  userInput.value = savedUser
+}
+
+let visits = Number(sessionStorage.getItem("visits") || 0)
+visits = visits + 1
+sessionStorage.setItem("visits", visits)
+tabCounter.textContent = `This tab has been refreshed ${visits} times.`
+
+let savedFeedback = sessionStorage.getItem(feedbackKey) || ""
+fb.value = savedFeedback
+
+themeBtn.onclick = function() {
+  let current = body.classList.contains("dark") ? "dark" : "light"
+  let next = current === "dark" ? "light" : "dark"
+  body.classList.remove("dark","light")
+  body.classList.add(next)
+  localStorage.setItem(themeKey, next)
+  themeBtn.textContent = next === "dark" ? "Switch to Light" : "Switch to Dark"
+}
+
+fSelect.onchange = function() {
+  let f = fSelect.value
+  body.style.fontSize = sizeMap[f] || "18px"
+  localStorage.setItem(fontKey, f)
+}
+
+saveUserBtn.onclick = function() {
+  const user = userInput.value.trim()
+  if (user.length > 0) {
+    localStorage.setItem(userKey, user)
+    document.getElementById("welcomeText").textContent = "Welcome, " + user
+  }
+}
+
+fb.addEventListener("input", function() {
+  sessionStorage.setItem(feedbackKey, fb.value)
+})
+
+resetBtn.onclick = function() {
+  localStorage.removeItem(themeKey)
+  localStorage.removeItem(fontKey)
+  localStorage.removeItem(userKey)
+  location.reload()
+}
+</script>
+</body>
+</html>

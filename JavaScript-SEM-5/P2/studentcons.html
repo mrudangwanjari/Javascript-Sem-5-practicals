@@ -1,0 +1,18 @@
+<html>
+<head>
+  <title>Button and Text</title>
+</head>
+<body>
+
+  <h1>Student Details On Console</h1>
+  <p id="displayName">Your name will appear here...</p>
+
+  <script>
+    let name = prompt("Enter your name:");
+    alert("Hello " + name + "!");
+    console.log("Student Name: " + name);
+    document.getElementById("displayName").innerText = "Student Name: " + name;
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+<body>
+  <h2>Validate Mobile Number</h2>
+  <p id="result"></p>
+
+  <script>
+    let number = prompt("Enter a mobile number:");
+    let mobileRegex = /^[6-9]\d{9}$/;
+    let valid = mobileRegex.test(number);
+    document.getElementById("result").innerText = valid ? "Valid Mobile Number" : "Invalid Mobile Number";
+  </script>
+</body>
+</html>

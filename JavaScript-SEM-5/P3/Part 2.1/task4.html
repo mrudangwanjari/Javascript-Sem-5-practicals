@@ -1,0 +1,14 @@
+<html>
+  <body>
+    <script>
+      let n = Number(prompt("Enter a number:"));
+      let a = 0, b = 1;
+      while (a <= n) {
+        document.write(a + " ");
+        let temp = a + b;
+        a = b;
+        b = temp;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+  
+  <body>
+    
+    <h1>Practical 3 Task</h1>
+    
+    <p id = "nums">The numbers are:</p>
+    <p id = "largest">The largest number is:</p>
+    
+  <script>
+    
+    let num1 = prompt("Enter the first number:");
+    let num2 = prompt("Enter the second number:");
+    let num3 = prompt("Enter the third number:");
+    
+    if (num1 > num2 && num1 > num3) {
+      alert(`The largest number is: ${num1}`);
+      var largest = num1;
+    }
+      
+    else if (num2 > num1 && num2 > num3){
+      alert(`The largest number is: ${num2}`);
+      var largest = num2;
+    }
+      
+    else{
+      alert(`The largest number is: ${num3}`);
+      var largest = num3;
+    }
+
+    document.getElementById("nums").innerText = `The  numbers are: ${num1}, ${num2}, ${num3}`
+    document.getElementById("largest").innerText = `The largest number is: ${largest}`
+    
+  </script>
+    
+  </body>
+  
+</html>

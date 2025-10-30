@@ -1,0 +1,39 @@
+<html>
+<body>
+  <h2>Cart Calculator</h2>
+  <p id="products"></p>
+  <p id="discounted"></p>
+  <p id="total"></p>
+  <script>
+    let cart = [];
+    let itemCount = parseInt(prompt("How many items do you want to add?"));
+
+    for (let i = 0; i < itemCount; i++) {
+      let name = prompt("Enter product name:");
+      let price = parseFloat(prompt("Enter price of " + name + ":"));
+      cart.push({ id: i + 1, name: name, price: price });
+    }
+
+    cart.pop(); 
+    let productNames = cart.map(p => p.name);
+    let prices = cart.map(p => p.price)
+    document.getElementById("products").innerText = `Products: ${productNames.join(", ")} | Prices: ${prices.join(", ")} (Last item removed)`;
+
+    let discountedCart = cart.map(p => {
+      if (p.price > 10) {
+        return { ...p, price: p.price * 0.9 };
+      }
+      return p;
+    });
+
+    document.getElementById("discounted").innerText =
+      "Discounted Prices: " + discountedCart.map(p => `${p.name} - Rupees ${p.price}`).join(", ");
+    let total = discountedCart.reduce((sum, p) => sum + p.price, 0);
+    document.getElementById("total").innerText = "Cart Total: Rupees " + total;
+
+    discountedCart.forEach(p => {
+      console.log(`ID: ${p.id}, Name: ${p.name}, Price: Rupees${p.price}`);
+    });
+  </script>
+</body>
+</html>

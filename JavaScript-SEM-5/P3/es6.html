@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title>ES6+ Test</title>
+</head>
+<body>
+  <h1>ES6+ Test</h1>
+  <p>Check Console!</p>
+  
+  <script>
+
+    const name = "Firdous";
+    console.log(`Hello, ${name}! Welcome.`);
+  
+    const colors = ["Red", "Green", "Blue"];
+    const [first, second] = colors;
+    console.log(first);
+
+    const student = { id: 1, name1: "Riya", branch: "CSE" };
+    const { name1, branch } = student;
+    console.log(name1);
+
+    function greet(user = "Guest") {
+    console.log(`Hello, ${user}!`);
+    }
+    greet("Ramesh");
+    greet();
+
+    const add = (x, y) => x + y;
+    alert(add("Hello ", "Sem 5!"));
+    alert(add(10, 20));
+    
+  </script>
+
+</body>
+</html>

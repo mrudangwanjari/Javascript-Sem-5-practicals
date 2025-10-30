@@ -1,0 +1,17 @@
+<html>
+<body>
+  <h2>Find Duplicate Words</h2>
+  <p id="result"></p>
+
+  <script>
+    let text = prompt("Enter a sentence:");
+    let dupRegex = /\b(\w+)\s+\1\b/gi;
+    let duplicates = [];
+    let match;
+    while ((match = dupRegex.exec(text)) !== null) {
+      duplicates.push(match[1]);
+    }
+    document.getElementById("result").innerText = duplicates.length ? duplicates.join(", ") : "No duplicates found";
+  </script>
+</body>
+</html>

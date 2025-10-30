@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <script>
+      const randomNumber = Math.floor(Math.random() * 10) + 1;
+      let guess;
+      do {
+        guess = Number(prompt("Guess the number (1-10):"));
+      } while (guess !== randomNumber);
+      alert("Correct guess!");
+    </script>
+  </body>
+</html>

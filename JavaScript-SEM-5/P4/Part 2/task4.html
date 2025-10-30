@@ -1,0 +1,29 @@
+<html>
+<body>
+  <h3>Prime Checker</h3>
+  <input type="number" id="num" placeholder="Enter a number">
+  <button onclick="checkPrime()">Check</button>
+  <p id="result"></p>
+
+  <script>
+    const isPrime = (num) => {
+      try {
+        if (isNaN(num) || num < 2) throw "Invalid input";
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      } catch (error) {
+        return error;
+      }
+    };
+
+    function checkPrime() {
+      let num = document.getElementById("num").value;
+      let result = isPrime(Number(num));
+      document.getElementById("result").innerText =
+        result === true ? "Prime" : result === false ? "Not Prime" : result;
+    }
+  </script>
+</body>
+</html>

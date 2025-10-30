@@ -1,0 +1,34 @@
+<html>
+  <body>
+    <h2>Task 1</h2>
+
+    <p id = "task1.1"> Task 1.1 </p>
+    <p id = "task1.2"> Task 1.2 </p>
+    <p id = "task1.3"> Task 1.3 </p>
+    
+    
+    <script>
+      document.getElementById("task1.1").innerText = "Task 1.1: For loop: print numbers from 1 to 10\nCheck the console for output.";
+      for (let i = 1; i <= 10; i++) {
+        console.log(i);
+      }
+
+      document.getElementById("task1.2").innerHTML = "Task 1.2: While loop: print odd numbers from 1 to 15<br/>Check the console for output.";
+      let j = 1;
+      while (j <= 15) {
+        if (j % 2 !== 0) {
+          console.log(j);
+        }
+        j++;
+      }
+
+      document.getElementById("task1.3").innerHTML = "Task 1.3: Do-while loop: prompt user to type something until they type 'exit'";
+      let input;
+      do {
+        input = prompt("Type something (type 'exit' to stop):");
+      } while (input !== "exit");
+
+      console.log("You exited the loop.");
+    </script>
+  </body>
+</html>
