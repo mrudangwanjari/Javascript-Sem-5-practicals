@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .low-stock {
+            background-color: red !important;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Product Dashboard</h2>
+
+<label>Filter by Category: </label>
+<select id="categoryFilter">
+    <option value="all">All</option>
+</select>
+
+<br><br>
+
+<label>Search by Name: </label>
+<input type="text" id="searchBox" placeholder="Type product name...">
+
+<h3>Table 1 (Fetch API)</h3>
+<table id="tableFetch">
+    <thead>
+        <tr>
+            <th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<h3>Table 2 (jQuery AJAX)</h3>
+<table id="tableJQ">
+    <thead>
+        <tr>
+            <th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script src="script.js"></script>
+</body>
+</html>
